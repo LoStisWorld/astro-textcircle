@@ -1,0 +1,21 @@
+{
+  "name": "astro-textcircle",
+  "version": "1.0.0",
+  "description": "Create a text in a circle for your Astro project",
+  "type": "module",
+  "exports": "./index.ts",
+  "homepage": "https://github.com/LoStisWorld/astro-textcircle#readme",
+  "bugs": {
+    "url": "https://github.com/LoStisWorld/astro-textcircle/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LoStisWorld/astro-textcircle.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["astro", "astro-component", "UI"],
+  "author": "LoSti's World",
+  "license": "MIT"
+}
