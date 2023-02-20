@@ -1,0 +1,139 @@
+---
+interface Props {
+	class?: string;
+	text: string;
+	options?: {
+		spacing?: number;
+		uppercase?: boolean;
+		fontSizeInRem?: number;
+		fontWeight?: 'lighter' | 'normal' | 'bold' | 'bolder' | number;
+		divider?: string;
+		dividerColor?: string;
+		rotation?: number;
+	};
+	animation?: {
+		duration: string;
+		timing?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'linear' | string;
+		delay?: string;
+    direction?: 'normal' | 'reverse';
+		count?: 'infinite' | number;
+		animateOnHover?: boolean;
+		stopAnimateOnHover?: boolean;
+	};
+}
+
+// Default props
+const { class: classes, text, options, animation } = Astro.props as Props;
+
+// Options props
+const {
+	spacing = 1,
+	uppercase = false,
+	fontSizeInRem = 1,
+	fontWeight = 'normal',
+	divider = '',
+	dividerColor = '',
+	rotation = 0,
+} = options || {};
+
+// Animation props
+const {
+	duration,
+	timing = 'linear',
+	delay = '0s',
+  direction = 'normal',
+	count = 'infinite',
+	animateOnHover = false,
+	stopAnimateOnHover = false,
+} = animation || {};
+
+// Make array from text
+const textArray = [' ', ...text];
+
+// Calculate circle container
+function calcCircleStyle(): string {
+	let circleStyling: string;
+	const circleHeight = `${Math.floor(1.4 * (spacing / Math.sin(360 / textArray.length / (180 / Math.PI))) * fontSizeInRem)}rem`;
+	const circleAnimation = `animation:${direction === 'normal' ? 'circleSpin' : 'circleSpinReverse'} ${duration} ${timing} ${delay} ${count} ${animateOnHover ? 'paused' : ''}`;
+
+	if (duration) {
+		circleStyling = `height:${circleHeight};width:${circleHeight};${circleAnimation.trim()}`;
+	} else {
+		circleStyling = `height:${circleHeight};width:${circleHeight};transform:rotate(${rotation}deg);`;
+	}
+
+	return circleStyling;
+}
+
+// Calculate circle
+function calcCircleItemStyle(index: number): string {
+	const radius = `${(spacing / Math.sin(360 / textArray.length / (180 / Math.PI))) * -1}ch`;
+	const angle = (360 / textArray.length) * 1;
+	const itemStyling = `rotate(${angle * index}deg) translateY(${radius});font-size:${fontSizeInRem}rem;font-weight:${fontWeight}`;
+	return itemStyling;
+}
+---
+
+<div
+	class:list={['lw-textcircle',classes]}
+	data-circle-animate-hover={animateOnHover ?? null}
+	data-circle-stop-animate-hover={stopAnimateOnHover && !animateOnHover ? true : null}>
+	<p
+		style={`${calcCircleStyle()};${uppercase ? 'text-transform:uppercase' : ''}`}
+		aria-label={text}
+	>
+		{
+			textArray.map((char, i) => (
+				<span
+					style={`${calcCircleItemStyle(i)};${
+						divider && dividerColor && char.trim() === ''
+							? `color:${dividerColor};`
+							: ''
+					}`}
+					aria-hidden="true"
+					set:html={
+						char.trim() !== ''
+							? char
+							: char.trim() === '' && !divider
+							? '&nbsp;'
+							: divider
+					}
+				/>
+			))
+		}
+	</p>
+</div>
+
+<style>
+	.lw-textcircle > p {
+		display: inline-flex;
+		position: relative;
+	}
+	.lw-textcircle > p > span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.lw-textcircle[data-circle-animate-hover]:hover > p {
+		animation-play-state: running !important;
+	}
+
+	.lw-textcircle[data-circle-stop-animate-hover]:hover > p {
+		animation-play-state: paused !important;
+	}
+
+
+	@media (prefers-reduced-motion: no-preference) {
+		@keyframes circleSpin {
+			to {
+				transform: rotate3D(0, 0, 1, -360deg);
+			}
+		}
+		@keyframes circleSpinReverse {
+			to {
+				transform: rotate3D(0, 0, 1, 360deg);
+			}
+		}
+	}
+</style>
