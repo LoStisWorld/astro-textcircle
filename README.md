@@ -5,7 +5,7 @@ If you want to showcase your text in a circular layout, give this Astro componen
 > **While this component isn't inherently responsive, you can easily create multiple circles that adjust to fit the viewport - just keep this in mind.**
 
 
-## [Live Demo](https://stackblitz.com/edit/withastro-astro-wu7yqp?file=src%2Fpages%2Findex.astro)
+### [Live Demo](https://stackblitz.com/edit/withastro-astro-wu7yqp?file=src%2Fpages%2Findex.astro)
 
 
 ## Instalation
