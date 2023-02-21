@@ -53,7 +53,6 @@ interface Props {
 
 ### **divider and dividerColor**
 > Give your text a stylish twist with a divider instead of spacing - just use the **divider** property and set a custom color with **dividerColor**.
-> 
 > Keep in mind that in order to use the **dividerColor** property, the **divider** property must be set beforehand.
 
 ### **rotation**
@@ -67,7 +66,6 @@ interface Props {
 
 ### **stopAnimateOnHover**
 > This property will stop the animation on hover.
-> 
 > Keep in mind that using **animateOnHover** + **stopAnimateOnHover** will result in **animateOnHover**
 
 
