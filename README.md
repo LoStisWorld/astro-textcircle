@@ -70,7 +70,7 @@ interface Props {
 
 
 ## How to use
-```js
+```html
 ---
 import { Textcircle } from 'astro-textcircle';
 ---
