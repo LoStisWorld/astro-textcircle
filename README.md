@@ -117,7 +117,3 @@ import { Textcircle } from 'astro-textcircle';
 </div>
 ```
 > Notice that every letter and spacing in your text will be outputed as **set:html={}** 
-
-
-## Contribute
-You are welcome.
