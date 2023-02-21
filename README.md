@@ -117,5 +117,8 @@ import { Textcircle } from 'astro-textcircle';
 > Notice that every letter and spacing in your text will be outputed as **set:html={}** 
 
 
+### **While this component isn't inherently responsive, you can easily create multiple circles that adjust to fit the viewport - just keep this in mind.**
+
+
 ## Contribute
 You are welcome.
