@@ -6,7 +6,9 @@ A simple Astro component to display text in a circle.
 
 ## Instalation
 ```
+# using npm
 npm install astro-textcircle
+# using pnpm
 pnpm add astro-textcircle
 ```
 
