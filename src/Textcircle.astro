@@ -53,21 +53,14 @@ const textArray = [' ', ...text];
 // Calculate circle container styling
 function calcCircleStyle(): string {
 	let circleStyling: string;
-	const circleHeight = `${Math.floor(
-		1.4 *
-			(spacing / Math.sin(360 / textArray.length / (180 / Math.PI))) *
-			fontSizeInRem
-	)}rem`;
-	const circleAnimation = `animation:${
-		direction === 'normal' ? 'circleSpin' : 'circleSpinReverse'
-	} ${duration} ${timing} ${delay} ${count} ${animateOnHover ? 'paused' : ''}`;
+	const circleHeight = `${Math.floor(1.4 *(spacing / Math.sin(360 / textArray.length / (180 / Math.PI))) *fontSizeInRem)}rem`;
+	const circleAnimation = `animation:${direction === 'normal' ? 'circleSpin' : 'circleSpinReverse'} ${duration} ${timing} ${delay} ${count} ${animateOnHover ? 'paused' : ''}`;
 
 	if (duration) {
 		circleStyling = `height:${circleHeight};width:${circleHeight};${circleAnimation.trim()}`;
 	} else {
 		circleStyling = `height:${circleHeight};width:${circleHeight};transform:rotate(${rotation}deg);`;
 	}
-
 	return circleStyling;
 }
 
@@ -87,13 +80,9 @@ function calcCircleItemStyle(index: number): string {
 <div
 	class:list={['lw-textcircle', classes]}
 	data-circle-animate-hover={animateOnHover ?? null}
-	data-circle-stop-animate-hover={stopAnimateOnHover && !animateOnHover
-		? true
-		: null}>
+	data-circle-stop-animate-hover={stopAnimateOnHover && !animateOnHover ? true : null}>
 	<p
-		style={`${calcCircleStyle()};${
-			uppercase ? 'text-transform:uppercase' : ''
-		}`}
+		style={`${calcCircleStyle()};${uppercase ? 'text-transform:uppercase' : ''}`}
 		aria-label={text}>
 		{
 			textArray.map((char, i) => (
@@ -136,13 +125,27 @@ function calcCircleItemStyle(index: number): string {
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
+		@-webkit-keyframes circleSpin {
+			to {
+				-webkit-transform: rotate3D(0, 0, 1, -360deg);
+				transform: rotate3D(0, 0, 1, -360deg);
+			}
+		}
 		@keyframes circleSpin {
 			to {
+				-webkit-transform: rotate3D(0, 0, 1, -360deg);
 				transform: rotate3D(0, 0, 1, -360deg);
+			}
+		}
+		@-webkit-keyframes circleSpinReverse {
+			to {
+				-webkit-transform: rotate3D(0, 0, 1, 360deg);
+				transform: rotate3D(0, 0, 1, 360deg);
 			}
 		}
 		@keyframes circleSpinReverse {
 			to {
+				-webkit-transform: rotate3D(0, 0, 1, 360deg);
 				transform: rotate3D(0, 0, 1, 360deg);
 			}
 		}
