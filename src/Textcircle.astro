@@ -66,13 +66,9 @@ function calcCircleStyle(): string {
 
 // Calculate circle styling
 function calcCircleItemStyle(index: number): string {
-	const radius = `${
-		(spacing / Math.sin(360 / textArray.length / (180 / Math.PI))) * -1
-	}ch`;
+	const radius = `${(spacing / Math.sin(360 / textArray.length / (180 / Math.PI))) * -1}ch`;
 	const angle = (360 / textArray.length) * 1;
-	const itemStyling = `transform:translate(-50%, -50%) rotate(${
-		angle * index
-	}deg) translateY(${radius});font-size:${fontSizeInRem}rem;font-weight:${fontWeight}`;
+	const itemStyling = `transform:translate(-50%, -50%) rotate(${angle * index}deg) translateY(${radius});font-size:${fontSizeInRem}rem;font-weight:${fontWeight}`;
 	return itemStyling;
 }
 ---
