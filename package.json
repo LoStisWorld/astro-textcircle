@@ -10,9 +10,14 @@
     "css",
     "text"
   ],
+  "files": [
+    "index.ts",
+    "./src/Textcircle.astro"
+  ],
   "type": "module",
-  "main": "index.ts",
-  "exports": "./index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
   "homepage": "https://github.com/LoStisWorld/astro-textcircle#readme",
   "bugs": {
     "url": "https://github.com/LoStisWorld/astro-textcircle/issues"
