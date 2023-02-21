@@ -1,9 +1,9 @@
-![textcircle-min](https://user-images.githubusercontent.com/83787591/220442759-dea70912-3072-4168-80e1-98febac39b52.jpg)
+![textcircle-min](https://user-images.githubusercontent.com/83787591/220473583-28c40480-3942-4d15-90b6-ad7b0ab8723c.jpg)
 
 # Astro Textcircle
 If you want to showcase your text in a circular layout, give this Astro component a try.
 
-## [Live Demo](https://www.example.com)
+## [Live Demo](https://stackblitz.com/edit/withastro-astro-wu7yqp?file=src%2Fpages%2Findex.astro)
 
 
 ## Instalation
