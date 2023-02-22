@@ -114,7 +114,7 @@ import { Textcircle } from 'astro-textcircle';
 
 
 ## Using Slot
-While **<slot />** can be used in this component, note that the height of the **slot-container** is dependent on the size of the text-circle.
+While **slot** can be used in this component, note that the height of the **slot-container** is dependent on the size of the text-circle.
 
 ```html
   <Textcircle text="Display text in a circle">
