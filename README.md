@@ -39,7 +39,7 @@ If Visual Studio Code is your preferred IDE, simply press CRTL+SPACE / CMD+SPACE
 | rotate             | animation | number            | -       | Rotate the circle to the given value in deg          |
 | duration           | animation | string            | -       | Change the animation speed                           |
 | timing             | animation | string            | -       | Animation timing function                            |
-| delay              | animation | string            | -       | Animation delay                                      |
+| delay              | animation | string            | 0s       | Animation delay                                      |
 | direction          | animation | normal / reverse  | normal  | Animation rotation direction                         |
 | count              | animation | infinite / number | infinit | Animation rotation count                             |
 | animateOnHover     | animation | boolean           | false   | Start animation on mouse hover                       |

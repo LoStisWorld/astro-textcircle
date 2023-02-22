@@ -30,7 +30,7 @@ const {
 	spacing = 1,
 	textTransform: tt,
 	fontSizeInRem: fsir = 1,
-	fontWeight: fw = 'normal',
+	fontWeight: fw,
 	divider = '',
 	dividerColor = '',
 	rotate,
@@ -72,9 +72,11 @@ function calcCircleStyle(): string {
 function calcCircleItemStyle(index: number): string {
 	const radius = `${(spacing / Math.sin(360 / textArray.length / (180 / Math.PI))) * -1}ch`;
 	const angle = (360 / textArray.length) * 1;
-	let itemStyling = `transform:translate(-50%, -50%) rotate(${angle * index}deg) translateY(${radius});font-size:${fsir}rem;font-weight:${fw};`;
+	let itemStyling = `transform:translate(-50%, -50%) rotate(${angle * index}deg) translateY(${radius});`;
 
+	if (fsir) itemStyling += `font-size:${fsir}rem;`;
 	if (tt) itemStyling += `text-transform:${tt}`;
+	if (fw) itemStyling += `font-weight:${fw}`;
 	return itemStyling;
 }
 ---
