@@ -110,3 +110,14 @@ import { Textcircle } from 'astro-textcircle';
 </div>
 ```
 > Notice that every letter and spacing in your text will be outputed as **set:html={}** 
+
+
+
+## Using Slot
+While **<slot />** can be used in this component, note that the height of the **slot-container** is dependent on the size of the text-circle.
+
+```html
+  <Textcircle text="Display text in a circle">
+    <img src="/my-image.jpg" alt="" />
+  <Textcircle>
+```

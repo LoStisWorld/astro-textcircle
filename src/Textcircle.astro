@@ -49,6 +49,8 @@ const {
 
 // Make array from text
 const textArray = [' ', ...text];
+// Get Textcircle inner width
+let circleInnerSize: string;
 
 // Calculate circle container styling
 function calcCircleStyle(): string {
@@ -65,6 +67,7 @@ function calcCircleStyle(): string {
 		circleStyling += `transform:rotate(${rotate}deg);`;
 	}
 
+	circleInnerSize = `calc(${circleSize} / 2)`;
 	return circleStyling;
 }
 
@@ -87,7 +90,10 @@ function calcCircleItemStyle(index: number): string {
 	data-circle-stop-animate-hover={stopAnimateOnHover && !animateOnHover ? true : null}
 	aria-label={text}
 >
+
+{!Astro.slots.default &&
 	<p
+		class="lw-textcircle-circle"
 		style={calcCircleStyle()}
 		aria-hidden="true"
 	>
@@ -110,33 +116,90 @@ function calcCircleItemStyle(index: number): string {
 			))
 		}
 	</p>
+}
+
+{ Astro.slots.default &&
+	<div class="lw-textcircle__inner">
+		<p
+			class="lw-textcircle-circle"
+			style={calcCircleStyle()}
+			aria-hidden="true"
+		>
+			{
+				textArray.map((char, i) => (
+					<span
+						style={`${calcCircleItemStyle(i)};${
+							divider && dividerColor && char.trim() === ''
+								? `color:${dividerColor};`
+								: ''
+						}`}
+						set:html={
+							char.trim() !== ''
+								? char
+								: char.trim() === '' && !divider
+								? '&nbsp;'
+								: divider
+						}
+					/>
+				))
+			}
+		</p>
+		<div style={`max-height:${circleInnerSize};max-width:${circleInnerSize};`} class="lw-textcircle__inner-slot">
+			<slot />
+		</div>
+	</div>
+}
+
 </div>
 
 <style is:global>
 	.lw-textcircle {
 		overflow: hidden;
 	}
-	.lw-textcircle > p {
+	.lw-textcircle .lw-textcircle-circle {
 		position: relative;
 		margin: 0;
 	}
-	.lw-textcircle > p > span {
+	.lw-textcircle .lw-textcircle-circle > span {
 		position: absolute;
 		top: 50%;
 		left: 50%;
 	}
-	.lw-textcircle > p > span > svg {
+	.lw-textcircle .lw-textcircle-circle > span > svg {
 		width: 1.2em;
 		display: block;
 	}
-	.lw-textcircle[data-circle-animate-hover]:hover > p {
+	.lw-textcircle[data-circle-animate-hover]:hover .lw-textcircle-circle {
 		-webkit-animation-play-state: running !important;
 		animation-play-state: running !important;
 	}
 
-	.lw-textcircle[data-circle-stop-animate-hover]:hover > p {
+	.lw-textcircle[data-circle-stop-animate-hover]:hover .lw-textcircle-circle {
 		-webkit-animation-play-state: paused !important;
 		animation-play-state: paused !important;
+	}
+
+	/* Textcircle inner */
+	.lw-textcircle__inner,
+	.lw-textcircle__inner-slot {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: center;
+    -ms-flex-pack: center;
+		justify-content: center;
+		-webkit-box-align: center;
+    -ms-flex-align: center;
+		align-items: center;
+	}
+
+	/* Textcircle inner slot */
+	.lw-textcircle__inner-slot {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		border-radius: 50%;
+		overflow: hidden;
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
