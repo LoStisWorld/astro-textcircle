@@ -121,3 +121,17 @@ While **<slot />** can be used in this component, note that the height of the **
     <img src="/my-image.jpg" alt="" />
   <Textcircle>
 ```
+
+## CSS Classes
+```html
+<div class="lw-textcircle">
+  <div class="lw-textcircle__inner">
+		<p class="lw-textcircle-circle">
+      Circle Text
+    </p>
+    <div class="lw-textcircle-slot">
+			<slot />
+		</div>
+  </div>
+</div>
+```

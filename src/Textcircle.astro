@@ -144,7 +144,7 @@ function calcCircleItemStyle(index: number): string {
 				))
 			}
 		</p>
-		<div style={`max-height:${circleInnerSize};max-width:${circleInnerSize};`} class="lw-textcircle__inner-slot">
+		<div style={`max-height:${circleInnerSize};max-width:${circleInnerSize};`} class="lw-textcircle-slot">
 			<slot />
 		</div>
 	</div>
@@ -181,7 +181,7 @@ function calcCircleItemStyle(index: number): string {
 
 	/* Textcircle inner */
 	.lw-textcircle__inner,
-	.lw-textcircle__inner-slot {
+	.lw-textcircle-slot {
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex;
@@ -194,7 +194,7 @@ function calcCircleItemStyle(index: number): string {
 	}
 
 	/* Textcircle inner slot */
-	.lw-textcircle__inner-slot {
+	.lw-textcircle-slot {
 		position: absolute;
 		height: 100%;
 		width: 100%;
