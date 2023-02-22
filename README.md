@@ -11,11 +11,11 @@ If you want to showcase your text in a circular layout, give this Astro componen
 ## Instalation
 > using npm
 ```
-npm install astro-circletext
+npm install astro-textcircle
 ```
 > using pnpm
 ```
-pnpm add astro-circletext
+pnpm add astro-textcircle
 ```
 
 
