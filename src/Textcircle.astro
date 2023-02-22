@@ -4,12 +4,12 @@ interface Props {
 	text: string;
 	options?: {
 		spacing?: number;
-		uppercase?: boolean;
+		textTransform?: 'uppercase' | 'lowercase' | 'none';
 		fontSizeInRem?: number;
 		fontWeight?: 'lighter' | 'normal' | 'bold' | 'bolder' | number;
 		divider?: string;
 		dividerColor?: string;
-		rotation?: number;
+		rotate?: number;
 	};
 	animation?: {
 		duration: string;
@@ -28,12 +28,12 @@ const { class: classes, text, options, animation } = Astro.props as Props;
 // Destructor options props
 const {
 	spacing = 1,
-	uppercase = false,
-	fontSizeInRem = 1,
-	fontWeight = 'normal',
+	textTransform: tt,
+	fontSizeInRem: fsir = 1,
+	fontWeight: fw = 'normal',
 	divider = '',
 	dividerColor = '',
-	rotation = 0,
+	rotate,
 } = options || {};
 
 // Destructor animation props
@@ -52,15 +52,19 @@ const textArray = [' ', ...text];
 
 // Calculate circle container styling
 function calcCircleStyle(): string {
-	let circleStyling: string;
-	const circleSize = `${Math.floor(1.6 *(spacing / Math.sin(360 / textArray.length / (180 / Math.PI))) * fontSizeInRem)}rem`;
+	const circleSize = `${Math.floor(1.8 *(spacing / Math.sin(360 / textArray.length / (180 / Math.PI))) * fsir)}rem`;
 	const circleAnimation = `animation:${direction === 'normal' ? 'circleSpin' : 'circleSpinReverse'} ${duration} ${timing} ${delay} ${count} ${animateOnHover ? 'paused' : ''}`;
 
+	let circleStyling: string = `height:${circleSize};width:${circleSize};`;
+
+	// Check animation props
 	if (duration) {
-		circleStyling = `height:${circleSize};width:${circleSize};${circleAnimation.trim()}`;
-	} else {
-		circleStyling = `height:${circleSize};width:${circleSize};transform:rotate(${rotation}deg);`;
+		circleStyling += `${circleAnimation.trim()};`;
+	} 
+	if (rotate && !duration) {
+		circleStyling += `transform:rotate(${rotate}deg);`;
 	}
+
 	return circleStyling;
 }
 
@@ -68,7 +72,9 @@ function calcCircleStyle(): string {
 function calcCircleItemStyle(index: number): string {
 	const radius = `${(spacing / Math.sin(360 / textArray.length / (180 / Math.PI))) * -1}ch`;
 	const angle = (360 / textArray.length) * 1;
-	const itemStyling = `transform:translate(-50%, -50%) rotate(${angle * index}deg) translateY(${radius});font-size:${fontSizeInRem}rem;font-weight:${fontWeight}`;
+	let itemStyling = `transform:translate(-50%, -50%) rotate(${angle * index}deg) translateY(${radius});font-size:${fsir}rem;font-weight:${fw};`;
+
+	if (tt) itemStyling += `text-transform:${tt}`;
 	return itemStyling;
 }
 ---
@@ -76,10 +82,13 @@ function calcCircleItemStyle(index: number): string {
 <div
 	class:list={['lw-textcircle', classes]}
 	data-circle-animate-hover={animateOnHover ?? null}
-	data-circle-stop-animate-hover={stopAnimateOnHover && !animateOnHover ? true : null}>
+	data-circle-stop-animate-hover={stopAnimateOnHover && !animateOnHover ? true : null}
+	aria-label={text}
+>
 	<p
-		style={`${calcCircleStyle()};${uppercase ? 'text-transform:uppercase' : ''}`}
-		aria-label={text}>
+		style={calcCircleStyle()}
+		aria-hidden="true"
+	>
 		{
 			textArray.map((char, i) => (
 				<span
@@ -88,7 +97,6 @@ function calcCircleItemStyle(index: number): string {
 							? `color:${dividerColor};`
 							: ''
 					}`}
-					aria-hidden="true"
 					set:html={
 						char.trim() !== ''
 							? char
@@ -102,7 +110,7 @@ function calcCircleItemStyle(index: number): string {
 	</p>
 </div>
 
-<style>
+<style is:global>
 	.lw-textcircle {
 		overflow: hidden;
 	}
