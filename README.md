@@ -26,30 +26,25 @@ If Visual Studio Code is your preferred IDE, simply press CRTL+SPACE / CMD+SPACE
 - **options** [object]
 - **animation** [object]
 
-```js
-interface Props {
-	class?: string;
-	text: string;
-	options?: {
-		spacing?: number;
-		uppercase?: boolean;
-		fontSizeInRem?: number;
-		fontWeight?: 'lighter' | 'normal' | 'bold' | 'bolder' | number;
-		divider?: string;
-		dividerColor?: string;
-		rotation?: number;
-	};
-	animation?: {
-		duration: string;
-		timing?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'linear' | string;
-		delay?: string;
-		direction?: 'normal' | 'reverse';
-		count?: 'infinite' | number;
-		animateOnHover?: boolean;
-		stopAnimateOnHover?: boolean;
-	};
-}
-```
+| Property | Type | Default | Desctription |
+| ----------- | :-----------: | :-----------: | ----------- |
+| class         | string | - | Add classes to the circle contaner |
+| text          | string | - | Shows the added text in a circular layout |
+| spacing       | number | 1 | Spacing between the letters |
+| uppercase     | boolean | - | True will add text-transform: uppercase |
+| fontSizeInRem | number | 1 | Will change the font-size to the given number in rem |
+| fontWeight    | string / number | normal | Will change the font-weight to the given value |
+| divider       | string | - | Change the spaces to the given value |
+| dividerColor  | string | - | Change the text color to the given color code |
+| rotation      | number | - | Rotate the circle to the given value in deg |
+| duration      | string | - | Change the animation speed |
+| timing        | string | - | Animation timing function |
+| delay         | string | - | Animation delay |
+| direction     | normal / reverse | normal | Animation rotation direction |
+| count         | infinite / nuber | infinit | Animation rotation count |
+| animateOnHover | boolean | false | Start animation on mouse hover |
+| stopAnimateOnHover | boolean | false | stop animation on hover |
+
 
 ### **divider and dividerColor**
 > Give your text a stylish twist with a divider instead of spacing - just use the **divider** property and set a custom color with **dividerColor**.
