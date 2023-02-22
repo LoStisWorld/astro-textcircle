@@ -31,7 +31,7 @@ If Visual Studio Code is your preferred IDE, simply press CRTL+SPACE / CMD+SPACE
 | class              | -         | string            | -       | Add classes to the circle contaner                   |
 | text               | -         | string            | -       | Shows the added text in a circular layout            |
 | spacing            | options   | number            | 1       | Spacing between the letters                          |
-| textTransform      | options   | string            | -       | True will add text-transform: uppercase              |
+| textTransform      | options   | string            | -       | Will add text-transform with the given value         |
 | fontSizeInRem      | options   | number            | 1       | Will change the font-size to the given number in rem |
 | fontWeight         | options   | string / number   | normal  | Will change the font-weight to the given value       |
 | divider            | options   | string            | -       | Change the spaces to the given value                 |
