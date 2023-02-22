@@ -26,24 +26,24 @@ If Visual Studio Code is your preferred IDE, simply press CRTL+SPACE / CMD+SPACE
 - **options** [object]
 - **animation** [object]
 
-| Property | Type | Default | Desctription |
-| ----------- | :-----------: | :-----------: | ----------- |
-| class         | string | - | Add classes to the circle contaner |
-| text          | string | - | Shows the added text in a circular layout |
-| spacing       | number | 1 | Spacing between the letters |
-| uppercase     | boolean | - | True will add text-transform: uppercase |
-| fontSizeInRem | number | 1 | Will change the font-size to the given number in rem |
-| fontWeight    | string / number | normal | Will change the font-weight to the given value |
-| divider       | string | - | Change the spaces to the given value |
-| dividerColor  | string | - | Change the text color to the given color code |
-| rotation      | number | - | Rotate the circle to the given value in deg |
-| duration      | string | - | Change the animation speed |
-| timing        | string | - | Animation timing function |
-| delay         | string | - | Animation delay |
-| direction     | normal / reverse | normal | Animation rotation direction |
-| count         | infinite / nuber | infinit | Animation rotation count |
-| animateOnHover | boolean | false | Start animation on mouse hover |
-| stopAnimateOnHover | boolean | false | stop animation on hover |
+| Property | Object | Type | Default | Desctription |
+| ----------- | :-----------: | :-----------: | :-----------: | ----------- |
+| class         | - | string | - | Add classes to the circle contaner |
+| text          | - | string | - | Shows the added text in a circular layout |
+| spacing       | options | number | 1 | Spacing between the letters |
+| uppercase     | options | boolean | - | True will add text-transform: uppercase |
+| fontSizeInRem | options | number | 1 | Will change the font-size to the given number in rem |
+| fontWeight    | options | string / number | normal | Will change the font-weight to the given value |
+| divider       | options | string | - | Change the spaces to the given value |
+| dividerColor  | options | string | - | Change the text color to the given color code |
+| rotation      | animation | number | - | Rotate the circle to the given value in deg |
+| duration      | animation | string | - | Change the animation speed |
+| timing        | animation | string | - | Animation timing function |
+| delay         | animation | string | - | Animation delay |
+| direction     | animation | normal / reverse | normal | Animation rotation direction |
+| count         | animation | infinite / nuber | infinit | Animation rotation count |
+| animateOnHover | animation | boolean | false | Start animation on mouse hover |
+| stopAnimateOnHover | animation | boolean | false | stop animation on hover |
 
 
 ### **divider and dividerColor**
