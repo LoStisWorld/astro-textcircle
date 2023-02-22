@@ -125,13 +125,13 @@ While **slot** can be used in this component, note that the height of the **slot
 ## CSS Classes
 ```html
 <div class="lw-textcircle">
-<div class="lw-textcircle__inner">
-<p class="lw-textcircle-circle">
-  Circle Text
-</p>
-<div class="lw-textcircle-slot">
-  <slot />
-</div>
-</div>
+  <div class="lw-textcircle__inner">
+    <p class="lw-textcircle-circle">
+      Circle Text
+    </p>
+    <div class="lw-textcircle-slot">
+      <slot />
+    </div>
+  </div>
 </div>
 ```
