@@ -36,7 +36,7 @@ If Visual Studio Code is your preferred IDE, simply press CRTL+SPACE / CMD+SPACE
 | fontWeight         | options   | string / number   | normal  | Will change the font-weight to the given value       |
 | divider            | options   | string            | -       | Change the spaces to the given value                 |
 | dividerColor       | options   | string            | -       | Change the text color to the given color code        |
-| rotate             | object    | number            | -       | Rotate the circle to the given value in deg          |
+| rotate             | options   | number            | -       | Rotate the circle to the given value in deg          |
 | duration           | animation | string            | -       | Change the animation speed                           |
 | timing             | animation | string            | -       | Animation timing function                            |
 | delay              | animation | string            | 0s      | Animation delay                                      |
