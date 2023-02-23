@@ -1,1 +1,1 @@
-export { default as Textcircle } from "./src/Textcircle.astro";
+export { default as TextCircle } from "./src/TextCircle.astro";

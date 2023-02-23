@@ -1,7 +1,7 @@
 {
   "name": "astro-textcircle",
-  "version": "1.0.1",
-  "description": "Create a text in a circle for your Astro project",
+  "version": "1.0.2",
+  "description": "If you want to showcase your text in a circular layout, give this Astro component a try.",
   "keywords": [
     "astro",
     "astro-component",
@@ -12,7 +12,7 @@
   ],
   "files": [
     "index.ts",
-    "./src/Textcircle.astro"
+    "./src/TextCircle.astro"
   ],
   "type": "module",
   "exports": {
