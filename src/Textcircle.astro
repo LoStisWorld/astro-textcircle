@@ -49,6 +49,7 @@ const {
 
 // Make array from text
 const textArray = [' ', ...text];
+
 // Get Textcircle inner width
 let circleInnerSize: string;
 
@@ -60,12 +61,8 @@ function calcCircleStyle(): string {
 	let circleStyling: string = `height:${circleSize};width:${circleSize};`;
 
 	// Check animation props
-	if (duration) {
-		circleStyling += `${circleAnimation.trim()};`;
-	} 
-	if (rotate && !duration) {
-		circleStyling += `transform:rotate(${rotate}deg);`;
-	}
+	if (duration) circleStyling += `${circleAnimation.trim()};`;
+	if (rotate && !duration) circleStyling += `transform:rotate(${rotate}deg);`;
 
 	circleInnerSize = `calc(${circleSize} / 2)`;
 	return circleStyling;
@@ -78,8 +75,9 @@ function calcCircleItemStyle(index: number): string {
 	let itemStyling = `transform:translate(-50%, -50%) rotate(${angle * index}deg) translateY(${radius});`;
 
 	if (fsir) itemStyling += `font-size:${fsir}rem;`;
-	if (tt) itemStyling += `text-transform:${tt}`;
-	if (fw) itemStyling += `font-weight:${fw}`;
+	if (tt) itemStyling += `text-transform:${tt};`;
+	if (fw) itemStyling += `font-weight:${fw};`;
+	
 	return itemStyling;
 }
 ---
@@ -100,7 +98,7 @@ function calcCircleItemStyle(index: number): string {
 		{
 			textArray.map((char, i) => (
 				<span
-					style={`${calcCircleItemStyle(i)};${
+					style={`${calcCircleItemStyle(i)}${
 						divider && dividerColor && char.trim() === ''
 							? `color:${dividerColor};`
 							: ''
@@ -128,7 +126,7 @@ function calcCircleItemStyle(index: number): string {
 			{
 				textArray.map((char, i) => (
 					<span
-						style={`${calcCircleItemStyle(i)};${
+						style={`${calcCircleItemStyle(i)}${
 							divider && dividerColor && char.trim() === ''
 								? `color:${dividerColor};`
 								: ''
